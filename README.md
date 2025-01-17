@@ -50,12 +50,12 @@ Parameters:
 
 ---
 ### Response
-```json
+```
 {
     "success": true
 }
 ```
-```json
+```
 {
     "success": false
 }
