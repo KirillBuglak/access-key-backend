@@ -6,57 +6,57 @@
 ## Stack
 Java, Spring Boot, Spring Data Jpa, Spring Web, Spring Security, FlywayDB, PostgreSQL, Lombok.
 ____
-## Задание
+## Task
 <details>
-<summary>Подробнее</summary>
+<summary>Details</summary>
 
 ___
-### Необходимо сделать:
-- локальный контроль версий (git)
-- закомитить изначальную стадию проекта
-- реализовать фичу описанную ниже отдельным коммитом
+### Todo:
+- local version control (git)
+- commit first project version
+- implement described feature and commit
 
 
-#### Необходимая фича:
-API endpoint для проверки поддержки IPv6 сайтом.
+#### Feature:
+API endpoint for IPv6 support.
 
-Характеристики этого endpoint'a:
-- публичный
-- /api/web/checkIpv6Support - путь.
-- siteUrl - query parameter. Сюда приходит url сайта который нужно проверить на поддержку IPv6.
-- success - boolean. Такой должен быть ответ, с 200 кодом.
+Endpoint's characteristics:
+- public;
+- /api/web/checkIpv6Support - path;
+- siteUrl - query parameter;
+- success - boolean. response with 200 status;
 
-Примечания:
-- siteUrl - принимает как домен в чистом виде, так и полный URI.
+Additional details:
+- siteUrl - should take full and partial URI.
 </details>
 
 ---
-## Решение
+## Implementation
 
 ---
 ### Request
 ```
 GET http://localhost:8080/api/web/checkIpv6Support?siteUrl=https://www.yandex.ru/
 ```
-Controller метод
+Controller method
 ```java
 @GetMapping("/api/web/checkIpv6Support")
 public ResponseEntity<Boolean> checkIpv6Support(@RequestParam String siteUrl) throws NotValidURLException {
-    return ResponseEntity.ok(service.checkURL(siteUrl).isSuccess());
-    }
+    return ResponseEntity.ok(service.checkURL(siteUrl).isSuccess());
+    }
 ```
-Параметры:
-- siteUrl - как домен в чистом виде, так и полный URI;
+Parameters:
+- siteUrl - full or partial URI;
 
 ---
 ### Response
 ```json
 {
-    "success": true
+    "success": true
 }
 ```
 ```json
 {
-    "success": false
+    "success": false
 }
 ```
